@@ -14,6 +14,8 @@ md"""
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
 md"""
 ## Part One: Simple Difference
+
+How many measurements are larger than the previous measurement?
 """
 
 # ╔═╡ 7f03ad5e-bf73-4b16-958b-592ba4b6d923
@@ -48,14 +50,16 @@ main1("input.txt")
 # ╔═╡ 0e681b8a-82bc-425c-a374-e36d360559d2
 md"""
 ## Part Two: Simple Moving Average
+
+Consider sums of a three-measurement sliding window.
+How many sums are larger than the previous sum?
 """
 
 # ╔═╡ 774f7d4b-9d47-41eb-a6d7-e9d0fc579fbb
 """
 	main2(f: String)
 
-Consider sums of a three-measurement sliding window.
-How many sums are larger than the previous sum?
+Return the number of three-me
 """
 function main2(f::String)::Integer
 	nums = parse.(Int, readlines(f))
