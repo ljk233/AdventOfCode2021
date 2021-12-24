@@ -6,23 +6,23 @@ using InteractiveUtils
 
 # ╔═╡ d7b19f60-6348-11ec-11b8-abe5c0a6cee7
 md"""
-# Day One: Sonar Sweep
+# Day 1: Sonar Sweep
 
 **Reference:** [Day 1 (Advent of Code 2021)](https://adventofcode.com/2021/day/1)
+
+**Source:** [ljk233/AdventOfCode2021/days/01/d1.jl (GitHub)](https://github.com/ljk233/AdventOfCode2021/blob/4531514fc3649c0b44c76825a21b897dd421810d/days/01/d1.jl)
 """
 
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
 md"""
 ## Part One: Simple Difference
 
-How many measurements are larger than the previous measurement?
+**How many measurements are larger than the previous measurement?**
 """
 
 # ╔═╡ 7f03ad5e-bf73-4b16-958b-592ba4b6d923
 """
 	main1(f: String)
-
-Return the number of measurements that are larger than the previous measurement.
 """
 function main1(f::String)::Integer
 	nums = parse.(Int, readlines(f))
@@ -36,30 +36,29 @@ Expected result = 7.
 """
 
 # ╔═╡ d0d5ecd6-fa56-4fca-a293-fb0a682e4a7b
-main1("test.txt")
+main1("test.in")
 
 # ╔═╡ 63a48804-1a55-48c6-832f-74f52ac1d583
 md"""
 **Solution.**
-Confirmed output = 1466.
+Confirmed result = 1466.
 """
 
 # ╔═╡ 6c58e558-21fe-4221-b324-1efd90c7911a
-main1("input.txt")
+main1("data.in")
 
 # ╔═╡ 0e681b8a-82bc-425c-a374-e36d360559d2
 md"""
 ## Part Two: Simple Moving Average
 
 Consider sums of a three-measurement sliding window.
-How many sums are larger than the previous sum?
+
+**How many sums are larger than the previous sum?**
 """
 
 # ╔═╡ 774f7d4b-9d47-41eb-a6d7-e9d0fc579fbb
 """
 	main2(f: String)
-
-Return the number of three-me
 """
 function main2(f::String)::Integer
 	nums = parse.(Int, readlines(f))
@@ -77,16 +76,16 @@ Expected result = 5.
 """
 
 # ╔═╡ b5db6a00-eb1d-4cf0-bfad-d04b0d7d9968
-main2("test.txt")
+main2("test.in")
 
 # ╔═╡ 4d9b89d5-7f30-4031-a619-57fdb5936dc5
 md"""
 **Solution.**
-Confirmed output = 1491.
+Confirmed result = 1491.
 """
 
 # ╔═╡ 17e05631-6ee0-49f0-b273-c151812220af
-main2("input.txt")
+main2("data.in")
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -108,9 +107,9 @@ manifest_format = "2.0"
 # ╟─aeba97ec-fd96-4ef4-99b0-726665015217
 # ╠═7f03ad5e-bf73-4b16-958b-592ba4b6d923
 # ╟─8cc55754-6815-4c08-8538-b6f4c74d5c28
-# ╟─d0d5ecd6-fa56-4fca-a293-fb0a682e4a7b
+# ╠═d0d5ecd6-fa56-4fca-a293-fb0a682e4a7b
 # ╟─63a48804-1a55-48c6-832f-74f52ac1d583
-# ╟─6c58e558-21fe-4221-b324-1efd90c7911a
+# ╠═6c58e558-21fe-4221-b324-1efd90c7911a
 # ╟─0e681b8a-82bc-425c-a374-e36d360559d2
 # ╠═774f7d4b-9d47-41eb-a6d7-e9d0fc579fbb
 # ╟─2e90f5d0-e5ee-4abb-932b-5638afb3a146
