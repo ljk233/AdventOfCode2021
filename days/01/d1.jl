@@ -10,7 +10,7 @@ md"""
 
 **Reference:** [Day 1 (Advent of Code 2021)](https://adventofcode.com/2021/day/1)
 
-**Source:** [ljk233/AdventOfCode2021/days/01/d1.jl (GitHub)](https://github.com/ljk233/AdventOfCode2021/blob/4531514fc3649c0b44c76825a21b897dd421810d/days/01/d1.jl)
+**Source:** [ljk233/AdventOfCode2021/days/01/d1.jl (GitHub)](https://github.com/ljk233/AdventOfCode2021/blob/main/days/01/d1.jl)
 """
 
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
