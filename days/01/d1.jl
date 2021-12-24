@@ -22,7 +22,7 @@ md"""
 
 # ╔═╡ 7f03ad5e-bf73-4b16-958b-592ba4b6d923
 """
-	main1(f: String)
+	main1(f: String) -> Integer
 """
 function main1(f::String)::Integer
 	nums = parse.(Int, readlines(f))
@@ -58,7 +58,7 @@ Consider sums of a three-measurement sliding window.
 
 # ╔═╡ 774f7d4b-9d47-41eb-a6d7-e9d0fc579fbb
 """
-	main2(f: String)
+	main2(f: String) -> Integer
 """
 function main2(f::String)::Integer
 	nums = parse.(Int, readlines(f))
