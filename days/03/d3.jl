@@ -4,11 +4,21 @@
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ 2ea7d655-35ed-4687-9873-e658528232a8
+include("..\\shared\\bin2int.jl")
+
 # ╔═╡ d7b19f60-6348-11ec-11b8-abe5c0a6cee7
 md"""
-# Day Three: Binary Diagnostic
+# Day 3: Binary Diagnostic
 
 **Reference:** [Day 3 (Advent of Code 2021)](https://adventofcode.com/2021/day/3)
+
+**Source:** [ljk233/AdventOfCode2021/days/03/d3.jl](https://github.com/ljk233/AdventOfCode2021/blob/main/days/03/d3.jl)
+"""
+
+# ╔═╡ 14d4296b-4c17-47b5-80f2-1dcf89690f86
+md"""
+## Imports
 """
 
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
@@ -26,14 +36,12 @@ Use the binary numbers in your diagnostic report to calculate the gamma rate and
 """
 function main1(f::String)
 	lines = readlines(f)
-	n = length(lines[1])
 	gamma, epsilon = "", ""
-	for i ∈ 1:n
+	for i ∈ 1:length(lines[1])
 		count = 0
 		for line ∈ lines
 			isequal(line[i], '1') ? count += 1 : count -= 1
 		end
-
 		if count > 1
 			gamma *= "1"
 			epsilon *= "0"
@@ -42,7 +50,7 @@ function main1(f::String)
 			epsilon *= "1"
 		end
 	end
-	return parse(Int, gamma; base=2) * parse(Int, epsilon; base=2)
+	return bin2int(gamma) * bin2int(epsilon)
 end
 
 # ╔═╡ 8cc55754-6815-4c08-8538-b6f4c74d5c28
@@ -91,17 +99,14 @@ function search(lines::Vector{String}, common::Bool)::String
 	end
 end
 
-# ╔═╡ 260588a3-ca55-46f3-a8f1-5d546057c637
-bool2int(str) = parse(Int, str; base=2)
-
 # ╔═╡ 774f7d4b-9d47-41eb-a6d7-e9d0fc579fbb
 """
 	main2(f: String) -> Integer
 """
 function main2(f::String)
 	lines = readlines(f)
-	o2 = search(lines, true) |> bool2int
-	co2 = search(lines, false) |> bool2int
+	o2 = search(lines, true) |> bin2int
+	co2 = search(lines, false) |> bin2int
 	return o2*co2
 end
 
@@ -123,8 +128,25 @@ Confirmed result = 4481199.
 # ╔═╡ 17e05631-6ee0-49f0-b273-c151812220af
 main2("data.in")
 
+# ╔═╡ 00000000-0000-0000-0000-000000000001
+PLUTO_PROJECT_TOML_CONTENTS = """
+[deps]
+"""
+
+# ╔═╡ 00000000-0000-0000-0000-000000000002
+PLUTO_MANIFEST_TOML_CONTENTS = """
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.7.0"
+manifest_format = "2.0"
+
+[deps]
+"""
+
 # ╔═╡ Cell order:
 # ╟─d7b19f60-6348-11ec-11b8-abe5c0a6cee7
+# ╟─14d4296b-4c17-47b5-80f2-1dcf89690f86
+# ╠═2ea7d655-35ed-4687-9873-e658528232a8
 # ╟─aeba97ec-fd96-4ef4-99b0-726665015217
 # ╠═7f03ad5e-bf73-4b16-958b-592ba4b6d923
 # ╟─8cc55754-6815-4c08-8538-b6f4c74d5c28
@@ -133,9 +155,10 @@ main2("data.in")
 # ╠═6c58e558-21fe-4221-b324-1efd90c7911a
 # ╟─0e681b8a-82bc-425c-a374-e36d360559d2
 # ╠═5012e220-d2e2-436c-9ce4-dfe34f365df5
-# ╠═260588a3-ca55-46f3-a8f1-5d546057c637
 # ╠═774f7d4b-9d47-41eb-a6d7-e9d0fc579fbb
 # ╟─2e90f5d0-e5ee-4abb-932b-5638afb3a146
 # ╠═b5db6a00-eb1d-4cf0-bfad-d04b0d7d9968
 # ╟─4d9b89d5-7f30-4031-a619-57fdb5936dc5
 # ╠═17e05631-6ee0-49f0-b273-c151812220af
+# ╟─00000000-0000-0000-0000-000000000001
+# ╟─00000000-0000-0000-0000-000000000002
