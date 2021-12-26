@@ -15,4 +15,4 @@ The type of the returned vector should be checked before further use.
 flatten([[1, 2], [3, 4]])  # returns [1, 2, 3, 4]
 ```
 """
-flatten(vecofvec) = vcat(vecofvec...)
+flatten(vecofvec)::Vector{Any} = vcat(vecofvec...)

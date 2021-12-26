@@ -11,4 +11,4 @@ This is used for **@piping.**
 bin2int("101")  # returns 5
 ```
 """
-bin2int(str) = parse(Int, str; base=2)
+bin2int(str)::Integer = parse(Int, str; base=2)
