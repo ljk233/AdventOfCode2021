@@ -71,7 +71,7 @@ end
 
 # ╔═╡ 4c202df3-62b5-4446-b3e1-0afae48210b8
 md"""
-## Part One: Dodge The Danger
+## Part One
 
 To avoid the most dangerous areas, you need to determine the number of points where at least two lines overlap.
 Consider only horizontal and vertical lines.
@@ -114,7 +114,7 @@ main1("data.in")
 
 # ╔═╡ cede829f-55f0-4f4d-96b5-a380acd16394
 md"""
-## Part Two: Dodge The Danger At 45$^{\circ}$ As Well
+## Part Two
 
 You still need to determine the number of points where at least two lines overlap.
 

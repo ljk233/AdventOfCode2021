@@ -40,7 +40,7 @@ end
 
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
 md"""
-## Part One: Power Consumption
+## Part 1
 
 Use the binary numbers in your diagnostic report to calculate the gamma rate and epsilon rate, then multiply them together.
 
@@ -51,7 +51,7 @@ Use the binary numbers in your diagnostic report to calculate the gamma rate and
 """
 	main1(f: String) -> Integer
 """
-function main1(f::String)
+function main1(f)
 	lines = readlines(f)
 	gamma, epsilon = "", ""
 	for pos ∈ 1:length(first(lines))
@@ -86,7 +86,7 @@ main1("data.in")
 
 # ╔═╡ 0e681b8a-82bc-425c-a374-e36d360559d2
 md"""
-## Part Two: Life Support Rating
+## Part 2
 
 Use the binary numbers in your diagnostic report to calculate the oxygen generator rating and CO2 scrubber rating, then multiply them together.
 
@@ -95,12 +95,12 @@ Use the binary numbers in your diagnostic report to calculate the oxygen generat
 
 # ╔═╡ 5012e220-d2e2-436c-9ce4-dfe34f365df5
 """
-	rating(lines: String[], common: Bool) -> String
+	rating(lines: String[], iscommon: Bool) -> String
 """
-function rating(lines::Vector{String}, common::Bool)::String
+function rating(lines, iscommon)::String
 	for pos ∈ 1:length(lines[1])
 		m = balanceof(lines, pos)
-		if !common
+		if !iscommon
 			m *= -1
 		end
 		m == 1 ? target = '1' : target = '0'
@@ -113,8 +113,8 @@ end
 """
 	main2(f: String) -> Integer
 """
-function main2(f::String)
-	lines = readlines(f)
+function main2(f)
+	lines::Vector{String} = readlines(f)
 	o2 = rating(lines, true) |> bin2int
 	co2 = rating(lines, false) |> bin2int
 	return o2*co2

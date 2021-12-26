@@ -15,7 +15,7 @@ md"""
 
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
 md"""
-## Part One: Consecutive Difference
+## Part 1
 
 **How many measurements are larger than the previous measurement?**
 """
@@ -24,7 +24,7 @@ md"""
 """
 	main1(f: String) -> Integer
 """
-function main1(f::String)::Integer
+function main1(f)
 	nums = parse.(Int, readlines(f))
 	return sum(diff(nums) .≥ 1)
 end
@@ -49,7 +49,7 @@ main1("data.in")
 
 # ╔═╡ 0e681b8a-82bc-425c-a374-e36d360559d2
 md"""
-## Part Two: Three-Measurement Sliding Window
+## Part 2
 
 Consider sums of a three-measurement sliding window.
 
@@ -60,7 +60,7 @@ Consider sums of a three-measurement sliding window.
 """
 	main2(f: String) -> Integer
 """
-function main2(f::String)::Integer
+function main2(f)
 	nums = parse.(Int, readlines(f))
 	agg = Int[]
 	for i ∈ 1:length(nums)-2

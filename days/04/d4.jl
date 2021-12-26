@@ -75,7 +75,7 @@ end
 
 # ╔═╡ d1c2af3b-55cb-4861-8d7d-f0751b6fbaf7
 md"""
-## Part One: Beat The Squid
+## Part One
 
 To guarantee victory against the giant squid, figure out which board will win first.
 
@@ -86,7 +86,7 @@ To guarantee victory against the giant squid, figure out which board will win fi
 """
 	main1(f: String) -> Integer
 """
-function main1(f::String)
+function main1(f)
 	lines = readlines(f)
 	numbers, boards = prepare(lines)
 	nb = size(boards)[3]  # number of boards
@@ -129,14 +129,18 @@ main1("data.in")
 
 # ╔═╡ 63a674e5-334f-4439-bf3d-bd00f8e65556
 md"""
-## Part Two: Let The Squid Win
+## Part Two
+
+Figure out which board will win last.
+
+**Once it wins, what would its final score be?**
 """
 
 # ╔═╡ 6e18f565-26f3-4dc9-9016-269ed9d2d3f5
 """
 	main2(f: String) -> Integer
 """
-function main2(f::String)
+function main2(f)
 	lines = readlines(f)
 	numbers, boards = prepare(lines)
 	nb = size(boards)[3]  # number of boards

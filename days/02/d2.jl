@@ -32,7 +32,7 @@ end
 
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
 md"""
-## Part One: Dive Dive!
+## Part 1
 
 Calculate the horizontal position and depth you would have after following the planned course.
 
@@ -43,7 +43,7 @@ Calculate the horizontal position and depth you would have after following the p
 """
 	main1(f: String) -> Integer
 """
-function main1(f::String)::Integer
+function main1(f)
 	lines = readlines(f)
 	x, y = 0, 0
 	for cmd in cmds(lines)
@@ -78,7 +78,7 @@ main1("data.in")
 
 # ╔═╡ 0e681b8a-82bc-425c-a374-e36d360559d2
 md"""
-## Part Two: Dive Dive! (With Thinking)
+## Part 2
 
 Using this new interpretation of the commands, calculate the horizontal position and depth you would have after following the planned course.
 
@@ -89,7 +89,7 @@ Using this new interpretation of the commands, calculate the horizontal position
 """
 	main2(f: String) -> Integer
 """
-function main2(f::String)::Integer
+function main2(f)
 	lines = readlines(f)
 	x, y, aim = 0, 0, 0
 	for cmd in cmds(lines)
