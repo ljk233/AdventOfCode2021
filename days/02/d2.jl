@@ -15,16 +15,19 @@ md"""
 
 # ╔═╡ 1a85b479-29dc-4240-ad27-f04002c3f021
 """
-	cmds(f: String) -> (String, Integer)
+	cmds(lines: String[]) -> NamedTuple(:dir, :step)
 
-Return each line in `f` as a tuple.
+Return each line in `lines` as a named tuple, keywords **dir, step.**
 
-The first element is the command, one of either "up", "down", or "forwards".
-The second element is the magnitude of the command.
+**Example**
+```julia
+# line is "forward 7"
+(dir="fowards", step=7)
+```
 """
-cmds(f) = map(readlines(f)) do line
-	cmd, step = split(line)
-	return cmd, parse(Int, step)
+cmds(lines) = map(lines) do line
+	d, s = split(line)
+	return (dir=d, step=parse(Int, s))
 end
 
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
@@ -41,14 +44,15 @@ Calculate the horizontal position and depth you would have after following the p
 	main1(f: String) -> Integer
 """
 function main1(f::String)::Integer
+	lines = readlines(f)
 	x, y = 0, 0
-	for (cmd, step) in cmds(f)
-		if isequal(cmd, "down")
-	    	y += step
-		elseif isequal(cmd, "up")
-	    	y -= step
+	for cmd in cmds(lines)
+		if cmd.dir == "down"
+	    	y += cmd.step
+		elseif cmd.dir == "up"
+	    	y -= cmd.step
 		else
-			x += step
+			x += cmd.step
 	    end
 	end
 	return x*y
@@ -86,15 +90,16 @@ Using this new interpretation of the commands, calculate the horizontal position
 	main2(f: String) -> Integer
 """
 function main2(f::String)::Integer
+	lines = readlines(f)
 	x, y, aim = 0, 0, 0
-	for (cmd, step) in cmds(f)
-		if isequal(cmd, "down")
-	    	aim += step
-		elseif isequal(cmd, "up")
-	    	aim -= step
+	for cmd in cmds(lines)
+		if cmd.dir == "down"
+	    	aim += cmd.step
+		elseif cmd.dir == "up"
+	    	aim -= cmd.step
 		else
-	    	x += step
-	    	y += step * aim
+	    	x += cmd.step
+	    	y += cmd.step * aim
 	    end
 	end
 	return x*y
