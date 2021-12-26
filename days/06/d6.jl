@@ -19,7 +19,7 @@ md"""
 
 **Reference:** [Day 6 - Advent of Code 2021](https://adventofcode.com/2021/day/6)
 
-**Source:** [ljk233/AdventOfCode2021/days/05/d6.jl](https://github.com/ljk233/AdventOfCode2021/blob/main/days/05/d6.jl)
+**Source:** [ljk233/AdventOfCode2021/days/06/d6.jl](https://github.com/ljk233/AdventOfCode2021/blob/main/days/06/d6.jl)
 """
 
 # ╔═╡ b86823bf-1386-449f-8940-17aa45a0d242
