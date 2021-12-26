@@ -11,4 +11,4 @@ This is used for **@piping.**
 arrowsplit("a -> b")  # returns ["a", "b"]
 ```
 """
-arrowsplit(line)::Vector{String} = split(line, " -> ")
+arrowsplit(line) = split(line, " -> ")

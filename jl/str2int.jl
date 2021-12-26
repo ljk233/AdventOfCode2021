@@ -11,4 +11,4 @@ This is used for **@piping.**
 str2int("5")  # returns 5
 ```
 """
-str2int(digit)::Integer = parse(Int, digit)
+str2int(digit) = parse(Int, digit)
