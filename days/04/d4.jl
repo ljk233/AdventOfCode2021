@@ -5,10 +5,10 @@ using Markdown
 using InteractiveUtils
 
 # ╔═╡ f11532a5-f060-4e45-99b3-a946e4481ac2
-include("..\\shared\\commasplit.jl")
+include("..\\..\\jl\\commasplit.jl")
 
 # ╔═╡ 4df7707b-1616-4420-8775-2933d64ea2a1
-include("..\\shared\\str2int.jl")
+include("..\\..\\jl\\str2int.jl")
 
 # ╔═╡ 2a4cd270-6566-11ec-1521-57c6ef64156d
 md"""
@@ -16,7 +16,7 @@ md"""
 
 **Reference:** [Day 4 - Advent of Code 2021](https://adventofcode.com/2021/day/4)
 
-**Source:** []()
+**Source:** [ljk233/AdventOfCode2021/days/04/d4.jl](https://github.com/ljk233/AdventOfCode2021/blob/main/days/04/d4.jl)
 """
 
 # ╔═╡ 28035f33-3422-4527-b40d-051a1fa3474c
@@ -41,6 +41,20 @@ function prepare(lines)
 		push!(boards, numvec...)
 	end
 	return numbers, reshape(boards, (5, 5, Int(length(boards)/25)))
+end
+
+# ╔═╡ 7e5ac2de-e851-4750-9b19-005fed86d71a
+"""
+	score!(boards, called)
+
+Replace all elements of `b` equal to `called` with -1.
+"""
+function score!(boards, called)
+	for ijk ∈ eachindex(boards)
+		if boards[ijk] == called
+			boards[ijk] = -1
+		end
+	end
 end
 
 # ╔═╡ 23f4436b-3d29-4f11-a969-308432dd30ea
@@ -79,10 +93,7 @@ function main1(f::String)
 
 	winners = []; winningnumbers = []
 	for called ∈ numbers
-		for ijk ∈ eachindex(boards)
-			boards[ijk] == called ? boards[ijk] = -1 : nothing
-		end
-
+		score!(boards, called)
 		for b ∈ 1:nb
 			if won(boards[:, :, b])
 				push!(winners, boards[:, :, b])
@@ -132,10 +143,7 @@ function main2(f::String)
 
 	winners, winningnumbers, completed = [], [], []
 	for called ∈ numbers
-		for ijk ∈ eachindex(boards)
-			boards[ijk] == called ? boards[ijk] = -1 : nothing
-		end
-
+		score!(boards, called)
 		for b ∈ 1:nb
 			if won(boards[:, :, b]) && b ∉ completed
 				push!(completed, b)
@@ -191,8 +199,9 @@ manifest_format = "2.0"
 # ╠═f11532a5-f060-4e45-99b3-a946e4481ac2
 # ╠═4df7707b-1616-4420-8775-2933d64ea2a1
 # ╟─bf5eeafe-ecdb-4283-85b8-313360e5ffe1
-# ╟─173ea467-080a-4701-9769-8c9e1dd1ba19
-# ╟─23f4436b-3d29-4f11-a969-308432dd30ea
+# ╠═173ea467-080a-4701-9769-8c9e1dd1ba19
+# ╠═7e5ac2de-e851-4750-9b19-005fed86d71a
+# ╠═23f4436b-3d29-4f11-a969-308432dd30ea
 # ╟─d1c2af3b-55cb-4861-8d7d-f0751b6fbaf7
 # ╠═b16c6443-16be-4769-83f5-3c04168db3de
 # ╟─44407de0-82f0-433f-b58c-6763090b41f3
