@@ -4,6 +4,11 @@
 
 Return the given digit string as an integer value.
 
-This is used for piping.
+This is used for **@piping.**
+
+**Example**
+```julia
+str2int("5")  # returns 5
+```
 """
 str2int(digit)::Integer = parse(Int, digit)
