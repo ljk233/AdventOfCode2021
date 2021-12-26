@@ -5,7 +5,7 @@ using Markdown
 using InteractiveUtils
 
 # ╔═╡ 2ea7d655-35ed-4687-9873-e658528232a8
-include("..\\shared\\bin2int.jl")
+include("..\\..\\jl\\bin2int.jl")
 
 # ╔═╡ d7b19f60-6348-11ec-11b8-abe5c0a6cee7
 md"""
@@ -20,6 +20,23 @@ md"""
 md"""
 ## Imports
 """
+
+# ╔═╡ d9e09af7-42a2-4981-ab2f-21e7308c45e4
+md"""
+## Functions
+"""
+
+# ╔═╡ 8ceda75d-d741-4c1a-a884-dba74255270a
+"""
+	balanceof(lines: String[]) -> Integer
+"""
+function balanceof(lines, pos)
+	b = 0
+	for line ∈ lines
+		line[pos] == '1' ? b += 1 : b -= 1
+	end
+	b ≥ 0 ? 1 : -1
+end
 
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
 md"""
@@ -37,12 +54,8 @@ Use the binary numbers in your diagnostic report to calculate the gamma rate and
 function main1(f::String)
 	lines = readlines(f)
 	gamma, epsilon = "", ""
-	for i ∈ 1:length(lines[1])
-		count = 0
-		for line ∈ lines
-			isequal(line[i], '1') ? count += 1 : count -= 1
-		end
-		if count > 1
+	for pos ∈ 1:length(first(lines))
+		if balanceof(lines, pos) == 1
 			gamma *= "1"
 			epsilon *= "0"
 		else
@@ -82,20 +95,17 @@ Use the binary numbers in your diagnostic report to calculate the oxygen generat
 
 # ╔═╡ 5012e220-d2e2-436c-9ce4-dfe34f365df5
 """
-	search(lines: String[], common: Bool) -> String
+	rating(lines: String[], common: Bool) -> String
 """
-function search(lines::Vector{String}, common::Bool)::String
-	for i ∈ 1:length(lines[1])
-		count = 0
-		for line ∈ lines
-			isequal(line[i], '1') ? count += 1 : count -= 1
+function rating(lines::Vector{String}, common::Bool)::String
+	for pos ∈ 1:length(lines[1])
+		m = balanceof(lines, pos)
+		if !common
+			m *= -1
 		end
-		isequal(count, 0) ? count +=1 : nothing
-		!common ? count *= -1 : nothing
-		count ≥ 1 ? target = '1' : target = '0'
-
-		lines = filter(line -> isequal(line[i], target), lines)
-		isequal(length(lines), 1) ? (return lines[1]) : nothing
+		m == 1 ? target = '1' : target = '0'
+		lines = filter(line -> line[pos] == target, lines)
+		length(lines) == 1 ? (return lines[1]) : nothing
 	end
 end
 
@@ -105,8 +115,8 @@ end
 """
 function main2(f::String)
 	lines = readlines(f)
-	o2 = search(lines, true) |> bin2int
-	co2 = search(lines, false) |> bin2int
+	o2 = rating(lines, true) |> bin2int
+	co2 = rating(lines, false) |> bin2int
 	return o2*co2
 end
 
@@ -147,6 +157,8 @@ manifest_format = "2.0"
 # ╟─d7b19f60-6348-11ec-11b8-abe5c0a6cee7
 # ╟─14d4296b-4c17-47b5-80f2-1dcf89690f86
 # ╠═2ea7d655-35ed-4687-9873-e658528232a8
+# ╟─d9e09af7-42a2-4981-ab2f-21e7308c45e4
+# ╠═8ceda75d-d741-4c1a-a884-dba74255270a
 # ╟─aeba97ec-fd96-4ef4-99b0-726665015217
 # ╠═7f03ad5e-bf73-4b16-958b-592ba4b6d923
 # ╟─8cc55754-6815-4c08-8538-b6f4c74d5c28
