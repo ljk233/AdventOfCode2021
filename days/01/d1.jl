@@ -15,7 +15,7 @@ md"""
 
 # ╔═╡ aeba97ec-fd96-4ef4-99b0-726665015217
 md"""
-## Part One: Simple Difference
+## Part One: Consecutive Difference
 
 **How many measurements are larger than the previous measurement?**
 """
@@ -49,7 +49,7 @@ main1("data.in")
 
 # ╔═╡ 0e681b8a-82bc-425c-a374-e36d360559d2
 md"""
-## Part Two: Simple Moving Average
+## Part Two: Three-Measurement Sliding Window
 
 Consider sums of a three-measurement sliding window.
 
